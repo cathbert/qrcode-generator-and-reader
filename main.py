@@ -1,16 +1,24 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# Import required modules
+import qrcode
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# Main function to hold the generator code
+def main(data):
+    # Customize qrcode version, box size and border
+    code = qrcode.QRCode(version=2, box_size=15, border=5)
+
+    # Add data to the code
+    code.add_data(data)
+
+    # Now create the code
+    code.make(fit=True)
+
+    # Generate the image
+    img = code.make_image(fill='green', back_color='gold')
+
+    # Save the image
+    img.save('code_image.png')
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main("https://cartis-coding-hive.business.site")
